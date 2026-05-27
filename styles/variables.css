@@ -1,0 +1,68 @@
+:root {
+    /* Colors — dark minimalism with craft accents */
+    --color-bg: #0E0C0A;
+    --color-surface: #15110D;
+    --color-surface-alt: #1B1611;
+    --color-card: #1F1A14;
+    --color-card-hi: #251F18;
+    --color-border: #2E2620;
+    --color-border-soft: rgba(201, 169, 122, 0.14);
+    --color-border-strong: rgba(201, 169, 122, 0.32);
+
+    --color-text: #F4EDE3;
+    --color-text-soft: #CBC2B6;
+    --color-text-muted: #9C9388;
+    --color-text-dim: #6B6258;
+
+    --color-accent: #D4B07A;
+    --color-accent-hi: #E3C490;
+    --color-accent-dim: #8B6F47;
+    --color-accent-glow: rgba(212, 176, 122, 0.18);
+
+    --color-success: #8FB58A;
+    --color-error: #D58A7F;
+
+    --color-gradient-warm: linear-gradient(135deg, #2A1F15 0%, #15110D 60%);
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-body: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+
+    --fs-hero: clamp(2.6rem, 5.5vw, 5.4rem);
+    --fs-h2: clamp(2.1rem, 4vw, 3.8rem);
+    --fs-h3: clamp(1.25rem, 1.6vw, 1.6rem);
+    --fs-lead: clamp(1rem, 1.15vw, 1.125rem);
+    --fs-body: 1rem;
+    --fs-small: 0.875rem;
+    --fs-eyebrow: 0.78rem;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 9rem;
+
+    --container-max: 1320px;
+    --container-pad: clamp(1.25rem, 4vw, 3rem);
+
+    /* Radius & shadows */
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+    --radius-full: 999px;
+
+    --shadow-card: 0 24px 60px -30px rgba(0, 0, 0, 0.85);
+    --shadow-card-hover: 0 40px 80px -28px rgba(0, 0, 0, 0.95);
+    --shadow-accent: 0 16px 50px -14px rgba(212, 176, 122, 0.55);
+    --shadow-deep: 0 50px 100px -50px rgba(0, 0, 0, 1);
+
+    /* Motion */
+    --easing: cubic-bezier(0.22, 1, 0.36, 1);
+    --duration-fast: 180ms;
+    --duration: 320ms;
+    --duration-slow: 600ms;
+}

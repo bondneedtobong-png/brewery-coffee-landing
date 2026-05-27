@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brewery Coffee — крафтовое кафе в сердце Москвы. Спешелти-кофе, обжарка на месте, бариста-чемпионы.">
+    <meta name="theme-color" content="#0F0D0B">
+    <title>Brewery Coffee — Крафтовое кафе в Москве</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+    <!-- Top announcement strip -->
+    <div class="topbar">
+        <div class="container topbar__container">
+            <span class="topbar__item"><span class="topbar__dot"></span> Новая обжарка: Колумбия Finca&nbsp;El&nbsp;Paraiso уже в&nbsp;баре</span>
+            <span class="topbar__item topbar__item--right">Ежедневно с&nbsp;08:00 до&nbsp;23:00 · м.&nbsp;Театральная</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#hero" class="logo">
+                <span class="logo__mark" aria-hidden="true">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.2"/>
+                        <path d="M14 28V14h8a4 4 0 010 8h-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M22 22h2a3 3 0 010 6h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13 11l1.5 2M19 10l.5 3M25 11l-1 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="logo__text">
+                    <span class="logo__name">Brewery Coffee</span>
+                    <span class="logo__sub">est. 2017 · Moscow</span>
+                </span>
+            </a>
+
+            <nav class="nav" id="nav">
+                <ul class="nav__list">
+                    <li><a href="#about" class="nav__link"><span class="nav__num">01</span>О&nbsp;нас</a></li>
+                    <li><a href="#menu" class="nav__link"><span class="nav__num">02</span>Меню</a></li>
+                    <li><a href="#atmosphere" class="nav__link"><span class="nav__num">03</span>Атмосфера</a></li>
+                    <li><a href="#contacts" class="nav__link"><span class="nav__num">04</span>Контакты</a></li>
+                </ul>
+                <a href="#booking" class="btn btn--accent nav__cta">
+                    <span>Забронировать стол</span>
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </nav>
+
+            <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero__bg" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=2200&q=80" alt="" loading="eager">
+        </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <div class="container hero__container">
+            <div class="hero__content">
+                <p class="hero__eyebrow">
+                    <span class="hero__eyebrow-line" aria-hidden="true"></span>
+                    Speciality · Roastery · Москва
+                </p>
+                <h1 class="hero__title">
+                    Крафтовый кофе
+                    <span class="hero__title-em">в&nbsp;сердце</span>
+                    Москвы.
+                </h1>
+                <p class="hero__subtitle">Обжариваем зерно в&nbsp;день варки, варим на&nbsp;воде после обратного осмоса и&nbsp;разрешаем сидеть с&nbsp;ноутбуком до&nbsp;самого закрытия.</p>
+
+                <div class="hero__actions">
+                    <a href="#menu" class="btn btn--accent">
+                        <span>Посмотреть меню</span>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#booking" class="btn btn--ghost">Забронировать</a>
+                </div>
+
+                <ul class="hero__facts">
+                    <li>
+                        <span class="hero__fact-num">7</span>
+                        <span class="hero__fact-label">лет на&nbsp;карте<br>спешелти-Москвы</span>
+                    </li>
+                    <li>
+                        <span class="hero__fact-num">42<span class="hero__fact-plus">+</span></span>
+                        <span class="hero__fact-label">сорта зерна<br>прошли через ростер</span>
+                    </li>
+                    <li>
+                        <span class="hero__fact-num">4.9</span>
+                        <span class="hero__fact-label">средний рейтинг<br>на&nbsp;Яндекс.Картах</span>
+                    </li>
+                </ul>
+            </div>
+
+            <aside class="hero__card" aria-hidden="true">
+                <div class="hero__card-img">
+                    <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=900&q=80" alt="">
+                </div>
+                <div class="hero__card-info">
+                    <p class="hero__card-eyebrow">Roast of the week</p>
+                    <h3 class="hero__card-title">Эфиопия<br>Yirgacheffe G1</h3>
+                    <div class="hero__card-meta">
+                        <span>Цитрус · Жасмин · Мёд</span>
+                        <span class="hero__card-score">SCA <strong>87.5</strong></span>
+                    </div>
+                </div>
+                <div class="hero__badge">
+                    <span class="hero__badge-num">№1</span>
+                    <span class="hero__badge-text">по&nbsp;спешелти<br>в&nbsp;Тверском&nbsp;р-не</span>
+                </div>
+            </aside>
+        </div>
+
+        <a href="#about" class="hero__scroll" aria-label="К следующей секции">
+            <span class="hero__scroll-line" aria-hidden="true"></span>
+            <span class="hero__scroll-label">Листайте вниз</span>
+        </a>
+
+        <div class="hero__marquee" aria-hidden="true">
+            <div class="hero__marquee-track">
+                <span>Speciality coffee</span><span class="hero__marquee-sep">✦</span>
+                <span>Single origin</span><span class="hero__marquee-sep">✦</span>
+                <span>In-house roastery</span><span class="hero__marquee-sep">✦</span>
+                <span>Slow brew</span><span class="hero__marquee-sep">✦</span>
+                <span>Speciality coffee</span><span class="hero__marquee-sep">✦</span>
+                <span>Single origin</span><span class="hero__marquee-sep">✦</span>
+                <span>In-house roastery</span><span class="hero__marquee-sep">✦</span>
+                <span>Slow brew</span><span class="hero__marquee-sep">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about__top">
+                <div class="about__intro">
+                    <p class="section__eyebrow"><span class="section__eyebrow-num">01</span> О&nbsp;нас</p>
+                    <h2 class="section__title">Кафе, в&nbsp;котором кофе&nbsp;— <em>ремесло</em></h2>
+                    <p class="section__lead">С&nbsp;2017&nbsp;года мы&nbsp;ищем зерно по&nbsp;всему миру, привозим небольшими партиями и&nbsp;обжариваем прямо в&nbsp;зале — за&nbsp;деревянной перегородкой, под&nbsp;старые джазовые пластинки и&nbsp;шум маленького турбийона.</p>
+                </div>
+
+                <figure class="about__media reveal">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=900&q=80" alt="Интерьер кафе Brewery Coffee" loading="lazy">
+                    <figcaption class="about__media-tag">
+                        <span class="about__media-line"></span>
+                        Главный зал, 14&nbsp;столов
+                    </figcaption>
+                    <div class="about__media-plaque">
+                        <span class="about__media-plaque-num">7</span>
+                        <span class="about__media-plaque-text">лет<br>в&nbsp;центре Москвы</span>
+                    </div>
+                </figure>
+            </div>
+
+            <div class="features">
+                <article class="feature reveal">
+                    <span class="feature__num">01</span>
+                    <span class="feature__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="18" cy="12" rx="7" ry="9" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M18 3v18" stroke="currentColor" stroke-width="1.6"/>
+                            <ellipse cx="18" cy="26" rx="7" ry="6" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M18 20v12" stroke="currentColor" stroke-width="1.6"/>
+                        </svg>
+                    </span>
+                    <h3 class="feature__title">Спешелти-зерно</h3>
+                    <p class="feature__text">Только зерно с&nbsp;оценкой 85+&nbsp;по&nbsp;шкале&nbsp;SCA. Прямые контракты с&nbsp;фермами Эфиопии, Колумбии и&nbsp;Кении.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <span class="feature__num">02</span>
+                    <span class="feature__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="11" width="24" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/>
+                            <circle cx="18" cy="20" r="5" stroke="currentColor" stroke-width="1.6"/>
+                            <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+                            <path d="M11 5c1.5 1.5 0 3 1.5 4.5M18 4c1.5 1.5 0 3 1.5 4.5M25 5c1.5 1.5 0 3 1.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            <circle cx="26" cy="15" r="1" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <h3 class="feature__title">Обжарка на&nbsp;месте</h3>
+                    <p class="feature__text">Ростер&nbsp;Probat&nbsp;15&nbsp;кг работает четыре раза в&nbsp;неделю. Свежее зерно в&nbsp;вашей чашке через&nbsp;48&nbsp;часов.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <span class="feature__num">03</span>
+                    <span class="feature__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 4l2.5 6.5L27 12l-5 4 2 7-6-3.5L12 23l2-7-5-4 6.5-1.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            <path d="M12 30h12M14 33h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <h3 class="feature__title">Бариста-чемпионы</h3>
+                    <p class="feature__text">В&nbsp;команде призёры&nbsp;Russian Barista Championship и&nbsp;Brewers&nbsp;Cup. Готовим конкурсантов и&nbsp;судим чемпионаты.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <span class="feature__num">04</span>
+                    <span class="feature__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 30V14a4 4 0 014-4h16a4 4 0 014 4v16" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M6 30h24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M12 30v-8M24 30v-8" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M10 6v4M18 4v6M26 6v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <h3 class="feature__title">Лофт-пространство</h3>
+                    <p class="feature__text">Бетон, дерево, мягкий свет и&nbsp;большой стол у&nbsp;окна. Тихо для&nbsp;книг, достаточно живо для&nbsp;встреч.</p>
+                </article>
+            </div>
+
+            <div class="stats reveal">
+                <div class="stat">
+                    <span class="stat__value" data-count="7">7</span>
+                    <span class="stat__sep">·</span>
+                    <span class="stat__label">лет на&nbsp;карте Москвы</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__value" data-count="42">42</span>
+                    <span class="stat__sep">·</span>
+                    <span class="stat__label">сорта зерна за&nbsp;год</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__value" data-count="8">8</span>
+                    <span class="stat__sep">·</span>
+                    <span class="stat__label">бариста в&nbsp;команде</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__value">4.9</span>
+                    <span class="stat__sep">·</span>
+                    <span class="stat__label">рейтинг гостей</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu section section--alt" id="menu">
+        <div class="container">
+            <div class="section__head section__head--row">
+                <div>
+                    <p class="section__eyebrow"><span class="section__eyebrow-num">02</span> Меню</p>
+                    <h2 class="section__title">Что мы&nbsp;готовим<br><em>в&nbsp;это утро</em></h2>
+                </div>
+                <p class="section__lead section__lead--short">Меню меняется раз в&nbsp;две недели — следим за&nbsp;сезонностью зерна и&nbsp;настроением шефа.</p>
+            </div>
+
+            <div class="menu__tabs" role="tablist">
+                <button class="menu__tab is-active" data-tab="espresso" role="tab">Эспрессо</button>
+                <button class="menu__tab" data-tab="alternative" role="tab">Альтернатива</button>
+                <button class="menu__tab" data-tab="dessert" role="tab">Десерты</button>
+            </div>
+
+            <div class="menu__grid is-active" data-panel="espresso">
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--hit">★ Хит</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Эспрессо</h3>
+                            <span class="menu-card__price">220&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Двойной шот из&nbsp;бленда «Утренний» — Бразилия и&nbsp;Эфиопия. Тёмный шоколад, абрикос, длинное послевкусие.</p>
+                        <ul class="menu-card__meta">
+                            <li>35&nbsp;мл</li>
+                            <li>Бленд</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Капучино</h3>
+                            <span class="menu-card__price">320&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Бархатное молоко с&nbsp;плотной пенкой и&nbsp;латте-арт. Фермерское или&nbsp;растительное молоко.</p>
+                        <ul class="menu-card__meta">
+                            <li>200&nbsp;мл</li>
+                            <li>Молоко</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Флэт-уайт</h3>
+                            <span class="menu-card__price">340&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Двойной ристретто и&nbsp;шёлковое молоко. Сильный характер без&nbsp;лишней пены.</p>
+                        <ul class="menu-card__meta">
+                            <li>180&nbsp;мл</li>
+                            <li>Ристретто</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--new">Новинка</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Раф медовый</h3>
+                            <span class="menu-card__price">380&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Эспрессо, сливки и&nbsp;цветочный мёд от&nbsp;башкирского пасечника. Десерт в&nbsp;чашке.</p>
+                        <ul class="menu-card__meta">
+                            <li>250&nbsp;мл</li>
+                            <li>Авторский</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="menu__grid" data-panel="alternative">
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--hit">★ Хит</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">V60 Эфиопия</h3>
+                            <span class="menu-card__price">420&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Yirgacheffe&nbsp;G1 анаэробной обработки. Жасмин, абрикос, чёрный чай. Заваривается 6&nbsp;минут.</p>
+                        <ul class="menu-card__meta">
+                            <li>300&nbsp;мл</li>
+                            <li>Pour over</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Кемекс Кения</h3>
+                            <span class="menu-card__price">460&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Nyeri&nbsp;AA, мытая обработка. Чёрная смородина, грейпфрут, тростниковый сахар. На&nbsp;двоих.</p>
+                        <ul class="menu-card__meta">
+                            <li>500&nbsp;мл</li>
+                            <li>Chemex</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=900&q=80&sat=-30" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Аэропресс</h3>
+                            <span class="menu-card__price">380&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Колумбия Finca&nbsp;El&nbsp;Paraiso. Молочный шоколад, маракуйя, ваниль.</p>
+                        <ul class="menu-card__meta">
+                            <li>220&nbsp;мл</li>
+                            <li>Pressure</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--new">Сезон</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Колд-брю</h3>
+                            <span class="menu-card__price">340&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">12-часовая холодная экстракция. Сладкий, плотный, без&nbsp;кислоты — для&nbsp;летнего дня.</p>
+                        <ul class="menu-card__meta">
+                            <li>350&nbsp;мл</li>
+                            <li>Cold brew</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="menu__grid" data-panel="dessert">
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--hit">★ Хит</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Круассан миндаль</h3>
+                            <span class="menu-card__price">280&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">72-часовая опара, бельгийское масло, миндальный крем франжипан. Пекут наши соседи из&nbsp;«Тёплой пекарни».</p>
+                        <ul class="menu-card__meta">
+                            <li>110&nbsp;г</li>
+                            <li>На&nbsp;опаре</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1542124948-dc391252a940?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Чизкейк баскский</h3>
+                            <span class="menu-card__price">360&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Карамелизованная корочка, нежная сливочная середина. Без&nbsp;коржа, как&nbsp;завещал Сан-Себастьян.</p>
+                        <ul class="menu-card__meta">
+                            <li>140&nbsp;г</li>
+                            <li>Без&nbsp;муки</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Брауни</h3>
+                            <span class="menu-card__price">320&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Тёмный шоколад&nbsp;66%, бельгийские сливки, морская соль. Внутри&nbsp;— расплавленная сердцевина.</p>
+                        <ul class="menu-card__meta">
+                            <li>120&nbsp;г</li>
+                            <li>Шоколад&nbsp;66%</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="menu-card reveal">
+                    <div class="menu-card__media">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy">
+                        <span class="menu-card__badge menu-card__badge--new">Новинка</span>
+                    </div>
+                    <div class="menu-card__body">
+                        <div class="menu-card__head">
+                            <h3 class="menu-card__title">Морковный торт</h3>
+                            <span class="menu-card__price">380&nbsp;₽</span>
+                        </div>
+                        <p class="menu-card__text">Влажный бисквит с&nbsp;грецким орехом и&nbsp;корицей, крем из&nbsp;маскарпоне. Любимое сочетание с&nbsp;V60.</p>
+                        <ul class="menu-card__meta">
+                            <li>150&nbsp;г</li>
+                            <li>С&nbsp;орехами</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="menu__foot">
+                <p>Полное меню — больше 60&nbsp;позиций — в&nbsp;кафе и&nbsp;по&nbsp;ссылке</p>
+                <a href="#booking" class="link-arrow">Скачать PDF-меню
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote section">
+        <div class="container">
+            <figure class="quote__figure reveal">
+                <svg class="quote__mark" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0 60V36C0 16 12 4 32 0v12c-10 4-16 12-16 24h16v24H0zm48 0V36c0-20 12-32 32-36v12c-10 4-16 12-16 24h16v24H48z" fill="currentColor"/>
+                </svg>
+                <blockquote class="quote__text">
+                    Я&nbsp;живу через дом и&nbsp;знаю всех бариста по&nbsp;имени. Здесь делают единственный в&nbsp;Москве флэт-уайт, ради которого я&nbsp;готов выйти из&nbsp;дома до&nbsp;завтрака.
+                </blockquote>
+                <figcaption class="quote__author">
+                    <img class="quote__author-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy">
+                    <div>
+                        <span class="quote__author-name">Александр&nbsp;Б.</span>
+                        <span class="quote__author-meta">Постоянный гость · 4&nbsp;года</span>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Atmosphere -->
+    <section class="atmosphere section section--alt" id="atmosphere">
+        <div class="container">
+            <div class="section__head section__head--row">
+                <div>
+                    <p class="section__eyebrow"><span class="section__eyebrow-num">03</span> Атмосфера</p>
+                    <h2 class="section__title">Здесь хочется<br><em>задержаться</em></h2>
+                </div>
+                <p class="section__lead section__lead--short">Тёплый свет, бетон, дерево и&nbsp;старые джазовые пластинки. Тихо для&nbsp;книг, достаточно живо для&nbsp;разговоров.</p>
+            </div>
+
+            <div class="gallery">
+                <figure class="gallery__item gallery__item--hero reveal">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=80" alt="Главный зал" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Главный зал</span>
+                        <span class="gallery__caption-text">14&nbsp;столов и&nbsp;большой общий стол у&nbsp;окна</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery__item reveal">
+                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=900&q=80" alt="Барная стойка" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Бар</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery__item reveal">
+                    <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=900&q=80" alt="Эспрессо" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Утренний эспрессо</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery__item reveal">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Зона у окна" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Окно во двор</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery__item reveal">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80" alt="Зерно" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Свежее зерно</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery__item gallery__item--wide reveal">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80" alt="Латте-арт" loading="lazy">
+                    <figcaption class="gallery__caption">
+                        <span class="gallery__caption-tag">Латте-арт</span>
+                        <span class="gallery__caption-text">Каждое утро — новая роспись по&nbsp;молоку</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="booking section" id="booking">
+        <div class="container booking__container">
+            <aside class="booking__intro">
+                <p class="section__eyebrow"><span class="section__eyebrow-num">04</span> Бронирование</p>
+                <h2 class="section__title">Оставьте<br>стол <em>за&nbsp;собой</em></h2>
+                <p class="section__lead">У&nbsp;нас 14&nbsp;столов и&nbsp;большой общий стол у&nbsp;окна. По&nbsp;вечерам пятницы и&nbsp;субботы рекомендуем бронировать заранее.</p>
+
+                <ul class="booking__features">
+                    <li class="reveal">
+                        <span class="booking__feature-num">01</span>
+                        <span class="booking__feature-text">Бронь держим 15&nbsp;минут после указанного времени</span>
+                    </li>
+                    <li class="reveal">
+                        <span class="booking__feature-num">02</span>
+                        <span class="booking__feature-text">Перезвоним и&nbsp;подтвердим в&nbsp;течение часа</span>
+                    </li>
+                    <li class="reveal">
+                        <span class="booking__feature-num">03</span>
+                        <span class="booking__feature-text">Дети, собаки и&nbsp;ноутбуки — самые желанные гости</span>
+                    </li>
+                </ul>
+
+                <div class="booking__image reveal">
+                    <img src="https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?auto=format&fit=crop&w=900&q=80" alt="Гости у окна" loading="lazy">
+                    <span class="booking__image-stamp">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1"/>
+                            <path id="bookingCircle" d="M30 8a22 22 0 010 44 22 22 0 010-44" fill="none"/>
+                            <text fill="currentColor" font-size="6.5" letter-spacing="2" font-family="Manrope">
+                                <textPath href="#bookingCircle" startOffset="0">BREWERY · COFFEE · SINCE 2017 · MOSCOW · </textPath>
+                            </text>
+                            <path d="M30 24v12M24 30h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </aside>
+
+            <form class="booking__form reveal" id="bookingForm" novalidate>
+                <div class="booking__form-head">
+                    <p class="booking__form-eyebrow">Онлайн-бронь · бесплатно</p>
+                    <h3 class="booking__form-title">Какой стол ищем?</h3>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="name">Имя</label>
+                        <input class="form-input" type="text" id="name" name="name" placeholder="Как к&nbsp;вам обращаться?" required>
+                        <span class="form-error" data-for="name"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="phone">Телефон</label>
+                        <input class="form-input" type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        <span class="form-error" data-for="phone"></span>
+                    </div>
+                </div>
+
+                <div class="form-row form-row--two">
+                    <div class="form-field">
+                        <label class="form-label" for="date">Дата</label>
+                        <input class="form-input" type="date" id="date" name="date" required>
+                        <span class="form-error" data-for="date"></span>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="time">Время</label>
+                        <input class="form-input" type="time" id="time" name="time" required>
+                        <span class="form-error" data-for="time"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="guests">Гостей</label>
+                        <select class="form-input" id="guests" name="guests" required>
+                            <option value="">Сколько вас будет?</option>
+                            <option value="1">1 гость</option>
+                            <option value="2">2 гостя</option>
+                            <option value="3">3 гостя</option>
+                            <option value="4">4 гостя</option>
+                            <option value="5">5 гостей</option>
+                            <option value="6">6 гостей</option>
+                            <option value="7+">Больше 6</option>
+                        </select>
+                        <span class="form-error" data-for="guests"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="comment">Комментарий <span class="form-label__opt">(необязательно)</span></label>
+                        <textarea class="form-input" id="comment" name="comment" rows="3" placeholder="Особый повод, пожелания по&nbsp;столу..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--accent btn--block">
+                    <span>Забронировать стол</span>
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+
+                <p class="form-meta">Нажимая «Забронировать», вы&nbsp;соглашаетесь с&nbsp;<a href="#">политикой обработки данных</a>.</p>
+
+                <p class="form-success" id="formSuccess" hidden>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Спасибо, мы&nbsp;свяжемся с&nbsp;вами в&nbsp;течение часа и&nbsp;подтвердим бронь.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="contacts section section--alt" id="contacts">
+        <div class="container">
+            <div class="section__head section__head--row">
+                <div>
+                    <p class="section__eyebrow"><span class="section__eyebrow-num">05</span> Контакты</p>
+                    <h2 class="section__title">Найдите нас<br><em>в&nbsp;центре города</em></h2>
+                </div>
+                <p class="section__lead section__lead--short">Большая Дмитровка, в&nbsp;3&nbsp;минутах от&nbsp;метро. Заходите с&nbsp;улицы — деревянная дверь между галереей и&nbsp;винотекой.</p>
+            </div>
+
+            <div class="contacts__grid">
+                <div class="contacts__map reveal" aria-label="Карта">
+                    <div class="contacts__map-image">
+                        <img src="https://images.unsplash.com/photo-1518107616985-bd48230d3b20?auto=format&fit=crop&w=1400&q=80" alt="Фасад кафе" loading="lazy">
+                    </div>
+                    <div class="contacts__map-overlay"></div>
+
+                    <div class="contacts__map-grid" aria-hidden="true"></div>
+
+                    <a href="https://yandex.ru/maps/?text=Москва%2C+ул.+Большая+Дмитровка%2C+14" target="_blank" rel="noopener" class="contacts__map-pin">
+                        <span class="contacts__map-pin-ping"></span>
+                        <span class="contacts__map-pin-dot">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" fill="currentColor"/>
+                                <circle cx="12" cy="9" r="3" fill="#0F0D0B"/>
+                            </svg>
+                        </span>
+                        <span class="contacts__map-pin-label">
+                            <strong>Brewery Coffee</strong>
+                            ул.&nbsp;Большая Дмитровка,&nbsp;14
+                        </span>
+                    </a>
+
+                    <a href="https://yandex.ru/maps/?text=Москва%2C+ул.+Большая+Дмитровка%2C+14" target="_blank" rel="noopener" class="contacts__map-cta">
+                        Открыть в&nbsp;Яндекс.Картах
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3h8v8M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <div class="contacts__info">
+                    <article class="contact-card reveal">
+                        <div class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-card__title">Адрес</h3>
+                        <p class="contact-card__text">Москва, Большая Дмитровка,&nbsp;14<br><span class="contact-card__dim">м.&nbsp;Театральная, 4&nbsp;минуты пешком</span></p>
+                    </article>
+
+                    <article class="contact-card reveal">
+                        <div class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-card__title">Связь</h3>
+                        <p class="contact-card__text">
+                            <a href="tel:+74951234567">+7 (495) 123-45-67</a><br>
+                            <a href="mailto:hello@brewery.coffee">hello@brewery.coffee</a>
+                        </p>
+                    </article>
+
+                    <article class="contact-card reveal">
+                        <div class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/>
+                                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-card__title">Часы работы</h3>
+                        <p class="contact-card__text">Пн&nbsp;– Пт &nbsp;08:00&nbsp;– 23:00<br>Сб&nbsp;– Вс &nbsp;09:00&nbsp;– 00:00</p>
+                    </article>
+
+                    <article class="contact-card reveal">
+                        <div class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/>
+                                <path d="M12 6c-3 4-3 8 0 12M12 6c3 4 3 8 0 12M2 12h20" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-card__title">Соцсети</h3>
+                        <p class="contact-card__text contact-card__socials">
+                            <a href="#">Telegram</a>
+                            <a href="#">Instagram</a>
+                            <a href="#">VK</a>
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA banner -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__inner">
+                <div>
+                    <p class="cta__eyebrow">Подпишитесь на&nbsp;рассылку</p>
+                    <h2 class="cta__title">Раз в&nbsp;месяц — о&nbsp;новой обжарке, дегустациях и&nbsp;закрытых вечерах</h2>
+                </div>
+                <form class="cta__form" id="newsletterForm" novalidate>
+                    <input class="cta__input" type="email" placeholder="your@email.com" aria-label="Email" required>
+                    <button type="submit" class="btn btn--accent">
+                        <span>Подписаться</span>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="#hero" class="logo">
+                        <span class="logo__mark" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.2"/>
+                                <path d="M14 28V14h8a4 4 0 010 8h-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M22 22h2a3 3 0 010 6h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M13 11l1.5 2M19 10l.5 3M25 11l-1 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="logo__text">
+                            <span class="logo__name">Brewery Coffee</span>
+                            <span class="logo__sub">est. 2017 · Moscow</span>
+                        </span>
+                    </a>
+                    <p class="footer__tagline">Спешелти-кофе и&nbsp;своя обжарка в&nbsp;центре Москвы. Каждый день варим, пока за&nbsp;окном идёт жизнь.</p>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__heading">Навигация</h4>
+                    <ul class="footer__list">
+                        <li><a href="#about">О&nbsp;нас</a></li>
+                        <li><a href="#menu">Меню</a></li>
+                        <li><a href="#atmosphere">Атмосфера</a></li>
+                        <li><a href="#booking">Бронь</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__heading">Контакты</h4>
+                    <ul class="footer__list">
+                        <li>Большая Дмитровка,&nbsp;14</li>
+                        <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:hello@brewery.coffee">hello@brewery.coffee</a></li>
+                        <li>Пн–Вс &nbsp;08:00&nbsp;– 23:00</li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__heading">Мы&nbsp;в&nbsp;соцсетях</h4>
+                    <div class="footer__socials">
+                        <a href="#" aria-label="Telegram" class="social">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 3L2 10l6 2 2 7 4-5 7 5 1-16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="VK" class="social">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 8c0 6 4 10 10 10h2v-3l4 3c1-1 1-2 0-3l-2-2 2-2c1-1 1-2 0-3h-3l-3 3v-3H10v3c-2 0-3-2-3-5H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__divider"></div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">© 2017–2026 Brewery Coffee. Все права защищены.</p>
+                <ul class="footer__legal">
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Публичная оферта</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__brand-line" aria-hidden="true">BREWERY · COFFEE</div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/form.js"></script>
+</body>
+</html>
