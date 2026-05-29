@@ -147,6 +147,78 @@
         dateInput.min = today;
     }
 
+    /* ===== Interactive seat schematic in booking ===== */
+    const guestsSelect = document.getElementById('guests');
+    const seats = document.querySelectorAll('.booking-table .seat');
+    const seatExtra = document.getElementById('seatExtra');
+    const seatCounter = document.getElementById('seatCounter');
+
+    if (guestsSelect && seats.length) {
+        const labels = {
+            0: 'Выберите количество гостей',
+            1: '<strong>1</strong> стол · уютно для&nbsp;одного',
+            2: '<strong>2</strong> места · романтика напротив',
+            3: '<strong>3</strong> места · компания на&nbsp;кофе',
+            4: '<strong>4</strong> места · идеально для&nbsp;встречи',
+            5: '<strong>5</strong> мест · большой круг друзей',
+            6: '<strong>6</strong> мест · всё занято',
+            7: '<strong>7+</strong> · сдвигаем столы вместе',
+        };
+        const valueToCount = { '': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7+': 7 };
+
+        const updateSeats = (rawValue) => {
+            const count = valueToCount[rawValue] ?? 0;
+            const occupied = Math.min(count, 6);
+            seats.forEach((seat) => {
+                const seatNum = parseInt(seat.dataset.seat, 10);
+                seat.dataset.occupied = seatNum <= occupied ? 'true' : 'false';
+            });
+            if (seatExtra) {
+                seatExtra.dataset.shown = count >= 7 ? 'true' : 'false';
+            }
+            if (seatCounter) {
+                seatCounter.innerHTML = labels[count] || labels[0];
+            }
+        };
+
+        guestsSelect.addEventListener('change', (e) => updateSeats(e.target.value));
+        /* Initialize from current value */
+        updateSeats(guestsSelect.value);
+    }
+
+    /* ===== Magnetic button effect on CTA ===== */
+    const magneticBtns = document.querySelectorAll('.btn--accent');
+    magneticBtns.forEach((btn) => {
+        const strength = 14;
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+            const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+            btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+
+    /* ===== Hero card 3D cursor parallax ===== */
+    const heroCard = document.querySelector('.hero__card');
+    if (heroCard) {
+        const heroSection = document.querySelector('.hero');
+        const maxTilt = 6; // degrees
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = (e.clientX - cx) / rect.width;
+            const dy = (e.clientY - cy) / rect.height;
+            heroCard.style.transform = `perspective(1000px) rotateY(${dx * maxTilt}deg) rotateX(${-dy * maxTilt}deg) rotate(${1.2 - dx * 1.2}deg)`;
+        });
+        heroSection.addEventListener('mouseleave', () => {
+            heroCard.style.transform = '';
+        });
+    }
+
     /* ===== Newsletter (front-end stub) ===== */
     const news = document.getElementById('newsletterForm');
     if (news) {

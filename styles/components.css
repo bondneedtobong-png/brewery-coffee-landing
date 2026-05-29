@@ -1299,6 +1299,322 @@ select.form-input {
 /* Body scroll lock */
 body.is-locked { overflow: hidden; }
 
+/* ===== Section background layers =====
+   Each section gets a contextual blurred photo + dark gradient overlay.
+   Photos are pre-blurred via Unsplash query params for performance. */
+.about, .quote, .contacts, .booking, .cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.about > .container,
+.quote > .container,
+.contacts > .container,
+.booking > .container,
+.cta > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about::before,
+.quote::before,
+.contacts::before,
+.booking::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.about::before {
+    background-image:
+        linear-gradient(180deg,
+            var(--color-bg) 0%,
+            rgba(14, 12, 10, 0.78) 18%,
+            rgba(14, 12, 10, 0.72) 50%,
+            rgba(14, 12, 10, 0.82) 82%,
+            var(--color-bg) 100%),
+        url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2200&q=30&blur=120');
+    opacity: 1;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: -10%;
+    width: 55%;
+    height: 70%;
+    background: radial-gradient(ellipse at center, rgba(212, 176, 122, 0.13), transparent 65%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.quote::before {
+    background-image:
+        linear-gradient(180deg,
+            var(--color-bg) 0%,
+            rgba(14, 12, 10, 0.75) 22%,
+            rgba(14, 12, 10, 0.68) 50%,
+            rgba(14, 12, 10, 0.78) 78%,
+            var(--color-bg) 100%),
+        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=2200&q=30&blur=120');
+}
+
+.booking::before {
+    background-image:
+        linear-gradient(180deg,
+            var(--color-bg) 0%,
+            rgba(14, 12, 10, 0.74) 18%,
+            rgba(14, 12, 10, 0.68) 50%,
+            rgba(14, 12, 10, 0.78) 82%,
+            var(--color-bg) 100%),
+        url('https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?w=2200&q=30&blur=120');
+}
+
+.booking::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 55%;
+    height: 65%;
+    background: radial-gradient(ellipse at center, rgba(212, 176, 122, 0.12), transparent 65%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contacts::before {
+    background-image:
+        linear-gradient(180deg,
+            var(--color-surface) 0%,
+            rgba(24, 17, 13, 0.78) 18%,
+            rgba(24, 17, 13, 0.7) 50%,
+            rgba(24, 17, 13, 0.82) 82%,
+            var(--color-surface) 100%),
+        url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=2200&q=30&blur=120');
+}
+
+.contacts::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    width: 45%;
+    height: 50%;
+    background: radial-gradient(ellipse at center, rgba(212, 176, 122, 0.10), transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* CTA — small subtle glow */
+.cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 90% at 50% 50%, rgba(212, 176, 122, 0.06), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== Booking — interactive seat schematic ===== */
+.booking__schematic {
+    position: relative;
+    padding: var(--space-lg) var(--space-md);
+    border-radius: var(--radius-xl);
+    background:
+        radial-gradient(ellipse 100% 80% at 50% 50%, rgba(212, 176, 122, 0.06), transparent 65%),
+        linear-gradient(180deg, rgba(31, 26, 20, 0.85) 0%, rgba(20, 16, 12, 0.85) 100%);
+    border: 1px solid var(--color-border-soft);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow: hidden;
+}
+
+.booking__schematic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 75%;
+    background: radial-gradient(circle, rgba(212, 176, 122, 0.10) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: opacity var(--duration) var(--easing);
+}
+
+.booking__schematic-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border-soft);
+    position: relative;
+    z-index: 1;
+}
+
+.booking__schematic-eyebrow {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.booking__schematic-counter {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-text-soft);
+    transition: color var(--duration) var(--easing);
+}
+
+.booking__schematic-counter strong {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.booking-table {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* Seat — default empty state */
+.seat {
+    transition: opacity var(--duration) var(--easing);
+}
+
+.seat__back {
+    transition: stroke var(--duration) var(--easing),
+                stroke-width var(--duration) var(--easing);
+    stroke-linecap: round;
+}
+
+.seat__person {
+    transition: fill 360ms var(--easing),
+                stroke 360ms var(--easing),
+                r 360ms var(--easing);
+}
+
+/* Animations on SVG inside seats use transform-box: fill-box for proper origin */
+.seat__person, .booking-table__cup, .seat-extra {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* Seat — occupied state */
+.seat[data-occupied="true"] .seat__back {
+    stroke: var(--color-accent);
+    stroke-width: 2.2;
+}
+
+.seat[data-occupied="true"] .seat__person {
+    fill: var(--color-accent);
+    stroke: var(--color-accent-hi);
+    filter: drop-shadow(0 0 6px rgba(212, 176, 122, 0.65));
+    animation: seat-pop 500ms var(--easing);
+}
+
+@keyframes seat-pop {
+    0%   { transform: scale(0.4); }
+    60%  { transform: scale(1.18); }
+    100% { transform: scale(1); }
+}
+
+/* Cup gently pulses while idle */
+.booking-table__cup {
+    transform-origin: 200px 200px;
+    animation: cup-breathe 4s ease-in-out infinite;
+}
+
+@keyframes cup-breathe {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.04); }
+}
+
+/* Steam wisps drift up */
+.booking-table__steam path {
+    animation: steam-rise 3s ease-in-out infinite;
+    transform-origin: bottom;
+}
+.booking-table__steam path:nth-child(2) { animation-delay: 0.4s; }
+.booking-table__steam path:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes steam-rise {
+    0%   { opacity: 0; transform: translateY(0) scaleY(0.8); }
+    35%  { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-14px) scaleY(1.2); }
+}
+
+/* +1 chair only shown when 7+ */
+.seat-extra {
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 400ms var(--easing),
+                transform 400ms var(--easing);
+}
+
+.seat-extra[data-shown="true"] {
+    opacity: 1;
+    animation: extra-pop 500ms var(--easing);
+}
+
+@keyframes extra-pop {
+    0%   { opacity: 0; transform: translateX(-20px) scale(0.5); }
+    60%  { opacity: 1; transform: translateX(0) scale(1.15); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Legend */
+.booking__schematic-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-soft);
+    position: relative;
+    z-index: 1;
+}
+
+.booking__schematic-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.booking__schematic-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212, 176, 122, 0.5);
+}
+
+.booking__schematic-dot--filled {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 6px rgba(212, 176, 122, 0.6);
+}
+
 /* ===== Page-load entrance animations ===== */
 @keyframes intro-fade-up {
     from { opacity: 0; transform: translateY(28px); }
