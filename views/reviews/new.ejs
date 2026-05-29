@@ -1,0 +1,46 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <section class="auth-card auth-card--wide">
+                <p class="auth-card__eyebrow">Отзыв</p>
+                <h1 class="auth-card__title">Пара тёплых строк <em>про&nbsp;нас</em></h1>
+                <p class="auth-card__lead">Опубликуем после модерации. Без&nbsp;спама, рекламы и&nbsp;ссылок — иначе придётся отклонить.</p>
+
+                <% if (error) { %><div class="form-banner form-banner--error"><%= error %></div><% } %>
+
+                <form method="post" action="/reviews/new" class="auth-form" novalidate>
+                    <div class="form-field">
+                        <label class="form-label">Оценка</label>
+                        <div class="rating-input" data-rating-input>
+                            <% for (let i = 5; i >= 1; i--) { %>
+                                <input type="radio" name="rating" id="r-<%= i %>" value="<%= i %>" <%= Number(form.rating) === i ? 'checked' : '' %>>
+                                <label for="r-<%= i %>" title="<%= i %> из 5">★</label>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="text">Ваш отзыв</label>
+                        <textarea class="form-input" id="text" name="text" rows="6" minlength="20" maxlength="1000" required><%= form.text %></textarea>
+                        <span class="form-meta">От&nbsp;20 до&nbsp;1000 символов.</span>
+                    </div>
+
+                    <button type="submit" class="btn btn--accent btn--block">
+                        <span>Отправить на модерацию</span>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

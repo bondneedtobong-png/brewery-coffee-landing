@@ -1,0 +1,80 @@
+<%- include('partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('partials/topbar') %>
+    <%- include('partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container privacy">
+            <header class="privacy__head">
+                <p class="section__eyebrow">Документы</p>
+                <h1 class="section__title">Политика <em>конфиденциальности</em></h1>
+                <p class="privacy__lead">Демонстрационный проект. Документ написан по&nbsp;духу 152-ФЗ «О&nbsp;персональных данных» и&nbsp;объясняет, что мы&nbsp;делаем с&nbsp;вашими данными в&nbsp;Brewery&nbsp;Coffee.</p>
+                <p class="privacy__meta">Действует с&nbsp;1&nbsp;января 2026. Редакция от&nbsp;<%= new Date().toLocaleDateString('ru-RU') %>.</p>
+            </header>
+
+            <section class="privacy__section">
+                <h2>1. Оператор и&nbsp;контакты</h2>
+                <p>Оператор персональных данных — ООО&nbsp;«Brewery Coffee» (ИНН&nbsp;демонстрационный). Адрес: г.&nbsp;Москва, ул.&nbsp;Большая Дмитровка, 14. E-mail: <a href="mailto:hello@brewery.coffee">hello@brewery.coffee</a>.</p>
+                <p class="privacy__note"><strong>Важно:</strong> это учебно-портфолийный проект. Реальная коммерческая обработка данных не&nbsp;ведётся.</p>
+            </section>
+
+            <section class="privacy__section">
+                <h2>2. Какие данные мы&nbsp;собираем</h2>
+                <ul>
+                    <li><strong>Имя</strong> — чтобы обращаться к&nbsp;вам в&nbsp;кафе и&nbsp;в&nbsp;личном кабинете.</li>
+                    <li><strong>Номер телефона</strong> — уникальный идентификатор, к&nbsp;которому привязана накопительная скидка по&nbsp;программе лояльности.</li>
+                    <li><strong>E-mail</strong> (необязательно) — для&nbsp;писем о&nbsp;новых обжарках и&nbsp;событиях.</li>
+                    <li><strong>Хеш пароля</strong> — bcrypt, открытый пароль не&nbsp;хранится.</li>
+                    <li><strong>История покупок</strong> — сумма и&nbsp;дата начислений для&nbsp;расчёта уровня в&nbsp;клубе.</li>
+                    <li><strong>Отзывы</strong> — текст и&nbsp;оценка, которые вы&nbsp;добровольно публикуете.</li>
+                    <li><strong>Метка согласия</strong> на&nbsp;обработку ПД и&nbsp;её&nbsp;timestamp.</li>
+                </ul>
+            </section>
+
+            <section class="privacy__section">
+                <h2>3. Зачем мы&nbsp;их&nbsp;используем</h2>
+                <ul>
+                    <li>Считать ваш уровень в&nbsp;программе лояльности и&nbsp;применять скидку при&nbsp;покупке.</li>
+                    <li>Связаться с&nbsp;вами по&nbsp;бронированию стола.</li>
+                    <li>Показывать на&nbsp;сайте отзывы, которые вы&nbsp;опубликовали после модерации.</li>
+                </ul>
+            </section>
+
+            <section class="privacy__section">
+                <h2>4. Как мы&nbsp;храним данные</h2>
+                <p>Данные хранятся в&nbsp;реляционной БД SQLite на&nbsp;нашем сервере. Пароли — в&nbsp;виде криптографического хеша bcrypt (factor&nbsp;10). Доступ к&nbsp;данным имеют только сотрудники с&nbsp;ролью «администратор» и&nbsp;«модератор» — у&nbsp;последних доступ ограничен модерацией отзывов.</p>
+            </section>
+
+            <section class="privacy__section">
+                <h2>5. Срок хранения и&nbsp;удаление</h2>
+                <p>Данные хранятся, пока действует ваш аккаунт в&nbsp;клубе Brewery&nbsp;Coffee. По&nbsp;вашему запросу на&nbsp;<a href="mailto:hello@brewery.coffee">hello@brewery.coffee</a> мы&nbsp;удалим учётную запись со&nbsp;всеми связанными данными (имя, телефон, e-mail, история начислений, отзывы) в&nbsp;течение&nbsp;30 дней. В&nbsp;демо-версии данные удаляются по&nbsp;запросу автора проекта.</p>
+            </section>
+
+            <section class="privacy__section">
+                <h2>6. Ваши права</h2>
+                <ul>
+                    <li>Получить копию данных, которые мы&nbsp;о&nbsp;вас храним.</li>
+                    <li>Исправить или&nbsp;дополнить их&nbsp;через личный кабинет.</li>
+                    <li>Отозвать согласие на&nbsp;обработку, написав на&nbsp;e-mail оператора.</li>
+                    <li>Полностью удалить аккаунт.</li>
+                </ul>
+            </section>
+
+            <section class="privacy__section">
+                <h2>7. Передача третьим лицам</h2>
+                <p>Мы&nbsp;не&nbsp;передаём ваши данные третьим лицам, не&nbsp;продаём их&nbsp;и&nbsp;не&nbsp;используем для&nbsp;таргетинга рекламы. Сервер размещён на&nbsp;нашей инфраструктуре.</p>
+            </section>
+
+            <section class="privacy__section">
+                <h2>8. Cookies и&nbsp;технические данные</h2>
+                <p>Мы&nbsp;используем только cookie сессии, чтобы вы&nbsp;оставались залогинены между визитами. Аналитики и&nbsp;рекламных трекеров на&nbsp;сайте нет.</p>
+            </section>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

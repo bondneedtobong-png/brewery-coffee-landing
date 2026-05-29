@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: brewery-coffee-landing
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install && npm run setup
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "true"
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /data/app.db
+    disk:
+      name: brewery-data
+      mountPath: /data
+      sizeGB: 1

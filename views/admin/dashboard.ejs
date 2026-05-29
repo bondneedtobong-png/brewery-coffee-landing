@@ -1,0 +1,49 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <header class="admin__head">
+                <div>
+                    <p class="section__eyebrow">Админка</p>
+                    <h1 class="section__title">Сводка <em>по&nbsp;кафе</em></h1>
+                </div>
+            </header>
+
+            <%- include('_nav') %>
+
+            <section class="admin-cards">
+                <a href="/admin/users" class="admin-card">
+                    <span class="admin-card__label">Пользователи</span>
+                    <span class="admin-card__num"><%= counts.users %></span>
+                    <span class="admin-card__hint"><%= counts.moderators %> с&nbsp;доступом к&nbsp;админке</span>
+                </a>
+                <a href="/admin/menu" class="admin-card">
+                    <span class="admin-card__label">Барная карта</span>
+                    <span class="admin-card__num"><%= counts.menu %></span>
+                    <span class="admin-card__hint">позиций на&nbsp;баре</span>
+                </a>
+                <a href="/admin/reviews?status=pending" class="admin-card<%= counts.pending ? ' admin-card--alert' : '' %>">
+                    <span class="admin-card__label">Отзывы</span>
+                    <span class="admin-card__num"><%= counts.reviews %></span>
+                    <span class="admin-card__hint">
+                        <% if (counts.pending) { %><strong><%= counts.pending %></strong>&nbsp;ждут&nbsp;модерации<% } else { %>модерация чиста<% } %>
+                    </span>
+                </a>
+                <a href="/admin/events" class="admin-card">
+                    <span class="admin-card__label">События</span>
+                    <span class="admin-card__num"><%= counts.events %></span>
+                    <span class="admin-card__hint">впереди</span>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

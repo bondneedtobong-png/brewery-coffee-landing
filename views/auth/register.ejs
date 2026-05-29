@@ -1,0 +1,62 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <section class="auth-card auth-card--wide">
+                <p class="auth-card__eyebrow">Программа лояльности</p>
+                <h1 class="auth-card__title">Заведите аккаунт<br><em>в&nbsp;Brewery&nbsp;Club</em></h1>
+                <p class="auth-card__lead">Скидка копится по&nbsp;номеру телефона — навсегда. 10&nbsp;уровней, от&nbsp;3% до&nbsp;20%. Плюс еженедельный бесплатный кофе за&nbsp;тёплый отзыв.</p>
+
+                <% if (error) { %><div class="form-banner form-banner--error"><%= error %></div><% } %>
+
+                <form method="post" action="/auth/register" class="auth-form" novalidate>
+                    <div class="form-row form-row--two">
+                        <div class="form-field">
+                            <label class="form-label" for="name">Имя</label>
+                            <input class="form-input" type="text" id="name" name="name" value="<%= form.name %>" required autofocus>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="phone">Телефон <span class="form-label__opt">(к нему привязана скидка)</span></label>
+                            <input class="form-input" type="tel" id="phone" name="phone" value="<%= form.phone %>" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row form-row--two">
+                        <div class="form-field">
+                            <label class="form-label" for="email">E-mail <span class="form-label__opt">(необязательно)</span></label>
+                            <input class="form-input" type="email" id="email" name="email" value="<%= form.email %>" placeholder="your@email.com">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="password">Пароль <span class="form-label__opt">(от&nbsp;6 символов)</span></label>
+                            <input class="form-input" type="password" id="password" name="password" minlength="6" required>
+                        </div>
+                    </div>
+
+                    <label class="form-consent">
+                        <input type="checkbox" name="consent" value="on">
+                        <span>
+                            Я&nbsp;согласен на&nbsp;обработку моих персональных данных в&nbsp;объёме, описанном в&nbsp;<a href="/privacy" target="_blank">политике конфиденциальности</a>.
+                            Согласие нужно, чтобы привязать номер телефона к&nbsp;программе лояльности.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="btn btn--accent btn--block">
+                        <span>Создать аккаунт</span>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+
+                <p class="auth-card__foot">Уже регистрировались? <a href="/auth/login">Войти</a></p>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

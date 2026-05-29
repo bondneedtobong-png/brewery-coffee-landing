@@ -1,0 +1,23 @@
+{
+  "name": "brewery-coffee-landing",
+  "version": "1.0.0",
+  "description": "Full-stack demo of a craft coffee shop landing with auth, loyalty program, reviews and admin",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "dev": "node --no-warnings --watch server.js",
+    "migrate": "node --no-warnings db/migrate.js",
+    "seed": "node --no-warnings db/seed.js",
+    "setup": "node --no-warnings db/migrate.js && node --no-warnings db/seed.js",
+    "reset": "node --no-warnings db/reset.js && node --no-warnings db/migrate.js && node --no-warnings db/seed.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
+  }
+}

@@ -1,0 +1,73 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <header class="admin__head">
+                <div>
+                    <p class="section__eyebrow">Админка</p>
+                    <h1 class="section__title">Пользователи</h1>
+                </div>
+            </header>
+
+            <%- include('_nav') %>
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th>Уровень</th>
+                        <th>Накоплено</th>
+                        <th>Роль</th>
+                        <th>Регистрация</th>
+                        <% if (user.role === 'admin') { %><th></th><% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((u) => { %>
+                        <tr>
+                            <td>
+                                <%= u.name %>
+                                <% if (u.email) { %><span class="admin-table__hint"><%= u.email %></span><% } %>
+                            </td>
+                            <td><%= displayPhone(u.phone) %></td>
+                            <td>L<%= u.level %> · <%= u.discount_pct %>%</td>
+                            <td><%= u.total_spent.toLocaleString('ru-RU') %>&nbsp;₽</td>
+                            <td><span class="status-pill status-pill--<%= u.role %>"><%= u.role %></span></td>
+                            <td><%= formatDate(u.created_at) %></td>
+                            <% if (user.role === 'admin') { %>
+                                <td class="admin-table__actions">
+                                    <% if (u.id !== user.id) { %>
+                                        <form method="post" action="/admin/users/<%= u.id %>/role" class="admin-inline-form">
+                                            <select name="role" class="form-input form-input--sm">
+                                                <option value="user" <%= u.role === 'user' ? 'selected' : '' %>>user</option>
+                                                <option value="moderator" <%= u.role === 'moderator' ? 'selected' : '' %>>moderator</option>
+                                                <option value="admin" <%= u.role === 'admin' ? 'selected' : '' %>>admin</option>
+                                            </select>
+                                            <button type="submit" class="btn btn--ghost btn--sm">→</button>
+                                        </form>
+                                        <form method="post" action="/admin/users/<%= u.id %>/topup" class="admin-inline-form">
+                                            <input type="number" name="amount" placeholder="+₽" min="100" class="form-input form-input--sm" style="width:90px">
+                                            <button type="submit" class="btn btn--accent btn--sm">+</button>
+                                        </form>
+                                    <% } else { %>
+                                        <span class="admin-table__hint">это вы</span>
+                                    <% } %>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

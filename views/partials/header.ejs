@@ -1,0 +1,64 @@
+<header class="header" id="header">
+    <div class="container header__container">
+        <a href="/" class="logo">
+            <span class="logo__mark" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M14 28V14h8a4 4 0 010 8h-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M22 22h2a3 3 0 010 6h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M13 11l1.5 2M19 10l.5 3M25 11l-1 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+            </span>
+            <span class="logo__text">
+                <span class="logo__name">Brewery Coffee</span>
+                <span class="logo__sub">est. 2017 · Moscow</span>
+            </span>
+        </a>
+
+        <nav class="nav" id="nav">
+            <ul class="nav__list">
+                <li><a href="/#about" class="nav__link">О&nbsp;нас</a></li>
+                <li><a href="/#menu" class="nav__link">Меню</a></li>
+                <li><a href="/#atmosphere" class="nav__link">Отзывы</a></li>
+                <li><a href="/#contacts" class="nav__link">Контакты</a></li>
+            </ul>
+
+            <div class="nav__account">
+                <% if (locals.user) { %>
+                    <a href="/profile" class="nav__profile" title="Личный кабинет">
+                        <span class="nav__profile-name"><%= user.name.split(' ')[0] %></span>
+                        <span class="nav__profile-level">L<%= user.level %> · <%= user.discount_pct %>%</span>
+                    </a>
+                    <% if (user.role === 'admin' || user.role === 'moderator') { %>
+                        <a href="/admin" class="nav__admin" title="Админка">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+                                <path d="M8 4v4l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    <% } %>
+                    <form action="/auth/logout" method="post" class="nav__logout">
+                        <button type="submit" title="Выйти">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 3H4v10h6M10 8H14M12 6l2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                <% } else { %>
+                    <a href="/auth/login" class="nav__link nav__link--login">Войти</a>
+                <% } %>
+            </div>
+
+            <a href="/#booking" class="btn btn--accent nav__cta">
+                <span>Забронировать стол</span>
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </nav>
+
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>

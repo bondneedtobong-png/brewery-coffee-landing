@@ -1,0 +1,74 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <header class="admin__head">
+                <div>
+                    <p class="section__eyebrow">Админка</p>
+                    <h1 class="section__title">Модерация <em>отзывов</em></h1>
+                </div>
+            </header>
+
+            <%- include('_nav') %>
+
+            <nav class="admin-tabs">
+                <a href="?status=pending" class="<%= status === 'pending' ? 'is-active' : '' %>">На модерации</a>
+                <a href="?status=approved" class="<%= status === 'approved' ? 'is-active' : '' %>">Опубликованы</a>
+                <a href="?status=rejected" class="<%= status === 'rejected' ? 'is-active' : '' %>">Отклонены</a>
+            </nav>
+
+            <% if (!reviews.length) { %>
+                <p class="profile__empty">Здесь пусто. Хорошо!</p>
+            <% } else { %>
+                <ul class="admin-review-list">
+                    <% reviews.forEach((r) => { %>
+                        <li class="admin-review">
+                            <header class="admin-review__head">
+                                <div>
+                                    <span class="admin-review__name"><%= r.user_name %></span>
+                                    <span class="admin-review__phone"><%= r.user_phone %></span>
+                                    <% if (r.level) { %><span class="admin-review__tier">L<%= r.level %> · <%= r.discount_pct %>%</span><% } %>
+                                </div>
+                                <div class="stars" aria-label="<%= r.rating %> из 5">
+                                    <% for (let i = 1; i <= 5; i++) { %>
+                                        <span class="star <%= i <= r.rating ? 'star--filled' : '' %>">★</span>
+                                    <% } %>
+                                </div>
+                            </header>
+                            <p class="admin-review__text"><%= r.text %></p>
+                            <footer class="admin-review__actions">
+                                <span class="admin-review__date"><%= formatDate(r.created_at) %></span>
+                                <div class="admin-review__buttons">
+                                    <% if (r.status !== 'approved') { %>
+                                        <form method="post" action="/admin/reviews/<%= r.id %>/approve">
+                                            <button type="submit" class="btn btn--accent btn--sm">Одобрить</button>
+                                        </form>
+                                    <% } %>
+                                    <% if (r.status !== 'rejected') { %>
+                                        <form method="post" action="/admin/reviews/<%= r.id %>/reject">
+                                            <button type="submit" class="btn btn--ghost btn--sm">Отклонить</button>
+                                        </form>
+                                    <% } %>
+                                    <% if (user.role === 'admin') { %>
+                                        <form method="post" action="/admin/reviews/<%= r.id %>/delete?status=<%= status %>" onsubmit="return confirm('Удалить навсегда?')">
+                                            <button type="submit" class="btn btn--danger btn--sm">Удалить</button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                            </footer>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

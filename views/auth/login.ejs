@@ -1,0 +1,54 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <section class="auth-card">
+                <p class="auth-card__eyebrow">Личный кабинет</p>
+                <h1 class="auth-card__title">С&nbsp;возвращением</h1>
+                <p class="auth-card__lead">Войдите по&nbsp;номеру телефона и&nbsp;паролю, чтобы увидеть свой уровень в&nbsp;клубе, скидку и&nbsp;историю отзывов.</p>
+
+                <% if (error) { %><div class="form-banner form-banner--error"><%= error %></div><% } %>
+
+                <form method="post" action="/auth/login" class="auth-form" novalidate>
+                    <input type="hidden" name="next" value="<%= next %>">
+
+                    <div class="form-field">
+                        <label class="form-label" for="phone">Телефон</label>
+                        <input class="form-input" type="tel" id="phone" name="phone" value="<%= form.phone %>" placeholder="+7 (___) ___-__-__" required autofocus>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="password">Пароль</label>
+                        <input class="form-input" type="password" id="password" name="password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn--accent btn--block">
+                        <span>Войти</span>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+
+                <p class="auth-card__foot">Ещё не в&nbsp;клубе? <a href="/auth/register">Зарегистрироваться</a></p>
+
+                <details class="auth-card__demo">
+                    <summary>Тестовые аккаунты для демо</summary>
+                    <ul>
+                        <li><strong>Админ</strong> · +7 999 000-00-01 / admin1234</li>
+                        <li><strong>Модератор</strong> · +7 999 000-00-02 / mod12345</li>
+                        <li><strong>Уровень 10</strong> · +7 999 111-00-07 / user1234</li>
+                        <li><strong>Уровень 1</strong> · +7 999 111-00-01 / user1234</li>
+                    </ul>
+                </details>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

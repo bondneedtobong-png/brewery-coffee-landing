@@ -1,0 +1,89 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <header class="admin__head">
+                <div>
+                    <p class="section__eyebrow">Админка</p>
+                    <h1 class="section__title">События <em>кафе</em></h1>
+                </div>
+                <a href="/admin/events/new" class="btn btn--accent"><span>Добавить событие</span></a>
+            </header>
+
+            <%- include('_nav') %>
+
+            <% if (edit) { %>
+                <section class="admin-edit">
+                    <h2 class="admin-edit__title"><%= edit.id ? 'Редактирование события' : 'Новое событие' %></h2>
+                    <form method="post" action="/admin/events/save" class="auth-form auth-form--inline">
+                        <input type="hidden" name="id" value="<%= edit.id || '' %>">
+                        <div class="form-field">
+                            <label class="form-label" for="title">Название</label>
+                            <input class="form-input" type="text" id="title" name="title" value="<%= edit.title %>" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="description">Описание</label>
+                            <textarea class="form-input" id="description" name="description" rows="3"><%= edit.description || '' %></textarea>
+                        </div>
+                        <div class="form-row form-row--two">
+                            <div class="form-field">
+                                <label class="form-label" for="event_date">Дата</label>
+                                <input class="form-input" type="date" id="event_date" name="event_date" value="<%= edit.event_date %>" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="status">Статус</label>
+                                <select class="form-input" id="status" name="status">
+                                    <option value="upcoming" <%= edit.status === 'upcoming' ? 'selected' : '' %>>Предстоит</option>
+                                    <option value="past" <%= edit.status === 'past' ? 'selected' : '' %>>Прошло</option>
+                                    <option value="cancelled" <%= edit.status === 'cancelled' ? 'selected' : '' %>>Отменено</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="admin-edit__actions">
+                            <button type="submit" class="btn btn--accent">Сохранить</button>
+                            <a href="/admin/events" class="btn btn--ghost">Отмена</a>
+                        </div>
+                    </form>
+                </section>
+            <% } %>
+
+            <% if (!events.length) { %>
+                <p class="profile__empty">Событий пока нет.</p>
+            <% } else { %>
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>Название</th><th>Дата</th><th>Статус</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <% events.forEach((ev) => { %>
+                            <tr>
+                                <td><%= ev.title %><% if (ev.description) { %><span class="admin-table__hint"><%= ev.description %></span><% } %></td>
+                                <td><%= formatDate(ev.event_date) %></td>
+                                <td>
+                                    <% if (ev.status === 'upcoming') { %><span class="status-pill status-pill--upcoming">Предстоит</span><% } %>
+                                    <% if (ev.status === 'past') { %><span class="status-pill status-pill--past">Прошло</span><% } %>
+                                    <% if (ev.status === 'cancelled') { %><span class="status-pill status-pill--rejected">Отменено</span><% } %>
+                                </td>
+                                <td class="admin-table__actions">
+                                    <a href="/admin/events/<%= ev.id %>/edit" class="btn btn--ghost btn--sm">Изменить</a>
+                                    <form method="post" action="/admin/events/<%= ev.id %>/delete" onsubmit="return confirm('Удалить событие?')">
+                                        <button type="submit" class="btn btn--danger btn--sm">×</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

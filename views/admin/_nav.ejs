@@ -1,0 +1,7 @@
+<nav class="admin-nav">
+    <a href="/admin" class="admin-nav__link <%= path === '/admin' ? 'is-active' : '' %>">Сводка</a>
+    <a href="/admin/reviews" class="admin-nav__link <%= path.startsWith('/admin/reviews') ? 'is-active' : '' %>">Отзывы</a>
+    <a href="/admin/menu" class="admin-nav__link <%= path.startsWith('/admin/menu') ? 'is-active' : '' %>">Меню</a>
+    <a href="/admin/events" class="admin-nav__link <%= path.startsWith('/admin/events') ? 'is-active' : '' %>">События</a>
+    <a href="/admin/users" class="admin-nav__link <%= path.startsWith('/admin/users') ? 'is-active' : '' %>">Пользователи</a>
+</nav>

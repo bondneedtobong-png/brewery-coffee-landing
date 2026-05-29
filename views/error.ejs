@@ -1,0 +1,24 @@
+<%- include('partials/head', { title: title || 'Ошибка' }) %>
+<body class="page-narrow">
+    <%- include('partials/topbar') %>
+    <%- include('partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <section class="auth-card auth-card--wide">
+                <p class="auth-card__eyebrow">Ой</p>
+                <h1 class="auth-card__title"><%= heading %></h1>
+                <p class="auth-card__lead"><%- message %></p>
+                <a href="/" class="btn btn--accent">
+                    <span>На главную</span>
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+</body>
+</html>

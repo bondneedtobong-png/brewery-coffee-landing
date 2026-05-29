@@ -1,0 +1,140 @@
+<%- include('partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('partials/topbar') %>
+    <%- include('partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <% if (welcome) { %>
+                <div class="form-banner form-banner--success">
+                    Добро пожаловать в&nbsp;клуб! Вы&nbsp;на&nbsp;уровне L<%= tier.level %> со&nbsp;скидкой <%= tier.discount %>%.
+                </div>
+            <% } %>
+
+            <header class="profile__head">
+                <div>
+                    <p class="section__eyebrow">Личный кабинет</p>
+                    <h1 class="section__title">Здравствуйте,<br><em><%= user.name.split(' ')[0] %></em></h1>
+                    <p class="profile__meta"><%= displayPhone %> · <%= user.email || 'без e-mail' %> · <span class="profile__role">роль · <%= user.role %></span></p>
+                </div>
+                <div class="profile__tier-card">
+                    <span class="profile__tier-label">Уровень</span>
+                    <span class="profile__tier-num">L<%= tier.level %></span>
+                    <span class="profile__tier-discount"><%= tier.discount %>% скидка</span>
+                </div>
+            </header>
+
+            <section class="profile__progress">
+                <div class="profile__progress-bar">
+                    <div class="profile__progress-fill" style="width: <%= (tierProgress * 100).toFixed(1) %>%"></div>
+                </div>
+                <div class="profile__progress-meta">
+                    <span><%= formatRub(user.total_spent || 0) %> накоплено</span>
+                    <% if (nextTier) { %>
+                        <span>До&nbsp;L<%= nextTier.level %> · <%= nextTier.discount %>% — осталось <%= formatRub(rublesToNext) %></span>
+                    <% } else { %>
+                        <span>Вы&nbsp;на&nbsp;высшем уровне — спасибо, что с&nbsp;нами!</span>
+                    <% } %>
+                </div>
+            </section>
+
+            <section class="profile__perk">
+                <p class="section__eyebrow">Ваши перки</p>
+                <h2 class="profile__perk-title"><%= perk.title %></h2>
+                <p class="profile__perk-text"><%= perk.text %></p>
+                <a href="/reviews/new" class="link-arrow">Оставить тёплый отзыв
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </section>
+
+            <section class="profile__columns">
+                <article class="profile__col">
+                    <h3 class="profile__col-title">Все уровни</h3>
+                    <ol class="tier-ladder">
+                        <% TIERS.forEach((t) => { %>
+                            <li class="tier-ladder__row<%= t.level === tier.level ? ' is-current' : '' %><%= t.level < tier.level ? ' is-past' : '' %>">
+                                <span class="tier-ladder__num">L<%= t.level %></span>
+                                <span class="tier-ladder__threshold"><%= formatRub(t.threshold) %></span>
+                                <span class="tier-ladder__discount"><%= t.discount %>%</span>
+                            </li>
+                        <% }) %>
+                    </ol>
+                </article>
+
+                <article class="profile__col">
+                    <h3 class="profile__col-title">Профиль</h3>
+                    <form method="post" action="/profile/edit" class="auth-form auth-form--inline">
+                        <div class="form-field">
+                            <label class="form-label" for="name">Имя</label>
+                            <input class="form-input" type="text" id="name" name="name" value="<%= user.name %>" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="phone">Телефон</label>
+                            <input class="form-input" type="tel" id="phone" name="phone" value="<%= displayPhone %>" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input class="form-input" type="email" id="email" name="email" value="<%= user.email || '' %>">
+                        </div>
+                        <button type="submit" class="btn btn--accent btn--block">
+                            <span>Сохранить</span>
+                        </button>
+                    </form>
+                </article>
+            </section>
+
+            <section class="profile__columns">
+                <article class="profile__col">
+                    <h3 class="profile__col-title">История начислений</h3>
+                    <% if (!tx.length) { %>
+                        <p class="profile__empty">Пока нет операций. Покупка в&nbsp;кафе — и&nbsp;здесь появится строка.</p>
+                    <% } else { %>
+                        <ul class="profile__tx">
+                            <% tx.forEach((t) => { %>
+                                <li>
+                                    <span class="profile__tx-amount">+<%= formatRub(t.amount) %></span>
+                                    <span class="profile__tx-desc"><%= t.description || '—' %></span>
+                                    <span class="profile__tx-date"><%= formatDate(t.created_at) %></span>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </article>
+
+                <article class="profile__col">
+                    <h3 class="profile__col-title">Ваши отзывы</h3>
+                    <% if (!reviews.length) { %>
+                        <p class="profile__empty">Вы&nbsp;ещё не&nbsp;оставляли отзывов.</p>
+                    <% } else { %>
+                        <ul class="profile__reviews">
+                            <% reviews.forEach((r) => { %>
+                                <li>
+                                    <div class="profile__review-head">
+                                        <span class="stars stars--sm" aria-label="<%= r.rating %> из 5">
+                                            <% for (let i = 1; i <= 5; i++) { %>
+                                                <span class="star <%= i <= r.rating ? 'star--filled' : '' %>">★</span>
+                                            <% } %>
+                                        </span>
+                                        <span class="status-pill status-pill--<%= r.status %>">
+                                            <% if (r.status === 'pending') { %>На модерации<% } %>
+                                            <% if (r.status === 'approved') { %>Опубликован<% } %>
+                                            <% if (r.status === 'rejected') { %>Отклонён<% } %>
+                                        </span>
+                                        <span class="profile__review-date"><%= formatDate(r.created_at) %></span>
+                                    </div>
+                                    <p class="profile__review-text"><%= r.text %></p>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>

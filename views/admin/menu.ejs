@@ -1,0 +1,115 @@
+<%- include('../partials/head', { title: title }) %>
+<body class="page-narrow">
+    <%- include('../partials/topbar') %>
+    <%- include('../partials/header') %>
+
+    <main class="narrow-main">
+        <div class="container">
+            <header class="admin__head">
+                <div>
+                    <p class="section__eyebrow">Админка</p>
+                    <h1 class="section__title">Барная <em>карта</em></h1>
+                </div>
+                <a href="/admin/menu/new" class="btn btn--accent">
+                    <span>Добавить позицию</span>
+                </a>
+            </header>
+
+            <%- include('_nav') %>
+
+            <% if (edit) { %>
+                <section class="admin-edit">
+                    <h2 class="admin-edit__title"><%= edit.id ? 'Редактирование позиции' : 'Новая позиция' %></h2>
+                    <form method="post" action="/admin/menu/save" class="auth-form auth-form--inline">
+                        <input type="hidden" name="id" value="<%= edit.id || '' %>">
+                        <div class="form-row form-row--two">
+                            <div class="form-field">
+                                <label class="form-label" for="category">Категория</label>
+                                <select class="form-input" id="category" name="category">
+                                    <option value="espresso" <%= edit.category === 'espresso' ? 'selected' : '' %>>Эспрессо</option>
+                                    <option value="alternative" <%= edit.category === 'alternative' ? 'selected' : '' %>>Альтернатива</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="title">Название</label>
+                                <input class="form-input" type="text" id="title" name="title" value="<%= edit.title %>" required>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="description">Описание</label>
+                            <textarea class="form-input" id="description" name="description" rows="2"><%= edit.description || '' %></textarea>
+                        </div>
+                        <div class="form-row form-row--two">
+                            <div class="form-field">
+                                <label class="form-label" for="price">Цена, ₽</label>
+                                <input class="form-input" type="number" id="price" name="price" value="<%= edit.price %>" min="0" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="volume">Объём</label>
+                                <input class="form-input" type="text" id="volume" name="volume" value="<%= edit.volume || '' %>" placeholder="200 мл">
+                            </div>
+                        </div>
+                        <div class="form-row form-row--two">
+                            <div class="form-field">
+                                <label class="form-label" for="tags">Теги (через запятую)</label>
+                                <input class="form-input" type="text" id="tags" name="tags" value="<%= edit.tags || '' %>">
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="sort_order">Порядок</label>
+                                <input class="form-input" type="number" id="sort_order" name="sort_order" value="<%= edit.sort_order %>">
+                            </div>
+                        </div>
+                        <div class="form-flags">
+                            <label><input type="checkbox" name="is_hit" <%= edit.is_hit ? 'checked' : '' %>> Хит</label>
+                            <label><input type="checkbox" name="is_new" <%= edit.is_new ? 'checked' : '' %>> Новинка</label>
+                        </div>
+                        <div class="admin-edit__actions">
+                            <button type="submit" class="btn btn--accent">Сохранить</button>
+                            <a href="/admin/menu" class="btn btn--ghost">Отмена</a>
+                        </div>
+                    </form>
+                </section>
+            <% } %>
+
+            <% const grouped = items.reduce((acc, it) => { (acc[it.category] = acc[it.category] || []).push(it); return acc; }, {}); %>
+            <% const labels = { espresso: 'Эспрессо', alternative: 'Альтернатива' }; %>
+            <% for (const cat of ['espresso', 'alternative']) { %>
+                <% const list = grouped[cat] || []; %>
+                <% if (list.length) { %>
+                    <h2 class="admin-cat"><%= labels[cat] %></h2>
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Название</th><th>Объём</th><th>Цена</th><th>Флаги</th><th>Порядок</th><th></th></tr>
+                        </thead>
+                        <tbody>
+                            <% list.forEach((it) => { %>
+                                <tr>
+                                    <td><%= it.title %><% if (it.description) { %><span class="admin-table__hint"><%= it.description %></span><% } %></td>
+                                    <td><%= it.volume || '—' %></td>
+                                    <td><%= it.price %>&nbsp;₽</td>
+                                    <td>
+                                        <% if (it.is_hit) { %><span class="status-pill status-pill--hit">Хит</span><% } %>
+                                        <% if (it.is_new) { %><span class="status-pill status-pill--new">Новинка</span><% } %>
+                                    </td>
+                                    <td><%= it.sort_order %></td>
+                                    <td class="admin-table__actions">
+                                        <a href="/admin/menu/<%= it.id %>/edit" class="btn btn--ghost btn--sm">Изменить</a>
+                                        <form method="post" action="/admin/menu/<%= it.id %>/delete" onsubmit="return confirm('Удалить позицию?')">
+                                            <button type="submit" class="btn btn--danger btn--sm">×</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } %>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/scripts/main.js?v=8"></script>
+    <script src="/scripts/app.js?v=8"></script>
+</body>
+</html>
