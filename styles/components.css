@@ -1299,10 +1299,73 @@ select.form-input {
 /* Body scroll lock */
 body.is-locked { overflow: hidden; }
 
-/* Force-show reveal when motion is reduced */
+/* ===== Page-load entrance animations ===== */
+@keyframes intro-fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-fade-down {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-fade-right {
+    from { opacity: 0; transform: translateX(60px) rotate(1.2deg); }
+    to   { opacity: 1; transform: translateX(0) rotate(1.2deg); }
+}
+
+@keyframes intro-badge-pop {
+    0%   { opacity: 0; transform: scale(0.4) rotate(-30deg); }
+    70%  { transform: scale(1.08) rotate(-4deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-8deg); }
+}
+
+@keyframes intro-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes intro-zoom-fade {
+    from { opacity: 0; transform: scale(1.08); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Hero background image — fade in, then run the existing heroZoom loop */
+.hero__bg img {
+    animation: intro-zoom-fade 1400ms var(--easing) both,
+               heroZoom 22s ease-in-out 1.4s infinite alternate;
+}
+
+/* Top strips */
+.topbar { animation: intro-fade-down 700ms var(--easing) 50ms both; }
+.header { animation: intro-fade-down 800ms var(--easing) 150ms both; }
+
+/* Hero content — left column staggered */
+.hero__eyebrow  { animation: intro-fade-up 700ms var(--easing) 350ms both; }
+.hero__title    { animation: intro-fade-up 900ms var(--easing) 500ms both; }
+.hero__subtitle { animation: intro-fade-up 700ms var(--easing) 750ms both; }
+.hero__actions  { animation: intro-fade-up 700ms var(--easing) 900ms both; }
+.hero__facts    { animation: intro-fade-up 800ms var(--easing) 1050ms both; }
+
+/* Hero card — slides in from right */
+.hero__card     { animation: intro-fade-right 1100ms var(--easing) 650ms both; }
+.hero__badge    { animation: intro-badge-pop 800ms var(--easing) 1500ms both; }
+
+/* Hero scroll cue + marquee */
+.hero__scroll   { animation: intro-fade-up 700ms var(--easing) 1700ms both; }
+.hero__marquee  { animation: intro-fade-in 800ms var(--easing) 1900ms both; }
+
+/* Force-show reveal + disable all entrance/loop animations when motion is reduced */
 @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; }
-    .hero__marquee-track, .hero__bg img, .booking__image-stamp,
-    .contacts__map-pin-dot, .contacts__map-pin-ping, .topbar__dot,
-    .hero__scroll-line::after { animation: none !important; }
+    .topbar, .header, .hero__eyebrow, .hero__title, .hero__subtitle,
+    .hero__actions, .hero__facts, .hero__card, .hero__badge,
+    .hero__scroll, .hero__marquee, .hero__bg img,
+    .hero__marquee-track, .booking__image-stamp, .contacts__map-pin-dot,
+    .contacts__map-pin-ping, .topbar__dot, .hero__scroll-line::after {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
