@@ -1,3 +1,12 @@
+# Render Blueprint — free tier deploy of Brewery Coffee landing.
+#
+# ВАЖНО: на бесплатном тарифе Render нельзя подключить persistent disk.
+# SQLite-файл живёт в эфемерной файловой системе и пересоздаётся
+# сидом на каждом деплое через `npm run setup`. Для портфолио-демо
+# это нормально: посетители всегда видят полный набор данных
+# (юзеры, меню, отзывы, события). При апгрейде на платный план
+# верните блок `disk:` и переменную DB_PATH=/data/app.db.
+
 services:
   - type: web
     name: brewery-coffee-landing
@@ -17,9 +26,3 @@ services:
         value: "true"
       - key: SESSION_SECRET
         generateValue: true
-      - key: DB_PATH
-        value: /data/app.db
-    disk:
-      name: brewery-data
-      mountPath: /data
-      sizeGB: 1
