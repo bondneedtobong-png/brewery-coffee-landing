@@ -6,8 +6,8 @@
 
 ## Демо
 
-- **Live:** *(после деплоя на Render — см. ниже)*
-- **GitHub:** https://github.com/bondneedtobong-png/brewery-coffee-landing
+- 🔗 **Live:** **https://brewery-coffee-landing.onrender.com** *(на Render free tier, см. ниже про «холодный старт»)*
+- 💾 **GitHub:** https://github.com/bondneedtobong-png/brewery-coffee-landing
 
 ## Стек
 
